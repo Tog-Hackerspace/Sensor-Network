@@ -34,8 +34,12 @@ class SensorTransporter(MQTTClient):
     def log_value(self, value=None):
 
         if not value:
-            value = self.sensor.value() or 0
-            
+            if 'ADC' in str(type(self.sensor)):
+                print type(self.sensor)
+                value = self.sensor.read()
+            else:
+                value = self.sensor.value() or 0
+
         self.connect()
         data = json.dumps({"sensor_name": self.sensor_name,
                            "sensor_pin": self.config['sensor_pin'],
