@@ -3,13 +3,14 @@ import ubinascii
 
 config = {
     "debug": True,
-    "ESSID": "TogLovesToHack", # Ensure you're using a 2.4Ghz AP
-    "PSK": "SuperSecretPSK",
-    "broker": "mqtt.tog.ie",
-    "topic": "/tog/sensors",
-    "client_id_prefix": "esp8266_",
-    "sensor_name": "Test Sensor",
-    "sensor_pin": 0,
+    "ESSID": "Tog Hackerspace", # Ensure you're using a 2.4Ghz AP
+    "PSK": "DucksLoveToQuack",
+    "broker": "10.48.1.254",
+    "topic": "/tog/sensors/knife_switch",
+    "client_id_prefix": "knife_switch_",
+    "sensor_name": "Knife Switch",
+    "sensor_pin": 4,
+    "sensor_mode": "PULL_UP",
     "interval": 20,
 }
 

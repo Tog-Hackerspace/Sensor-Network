@@ -41,6 +41,9 @@ def run():
     connect_wifi(config=config)
     pin = get_pin(config)
 
+    led_pin = machine.Pin(16, machine.Pin.OUT)
+    led_pin.value(False)
+
     #Where's all the RAM gone?
     gc.collect()
 
@@ -60,6 +63,9 @@ def run():
     print("Looping every {0} seconds, rebooting after {1} loops".format(interval, min(limit,HARD_LIMIT)))
     while loop_count < min(limit, HARD_LIMIT):
         s.log_value()
+
+        led_pin.value(not bool(pin.value()))
+
         loop_count += 1
         if loop_count % 100 == 0:
             print("Loop %s" % loop_count)
